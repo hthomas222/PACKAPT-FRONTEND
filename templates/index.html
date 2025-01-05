@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PackAPT</title>
+</head>
+<!Doctype html>
+<style>
+body {
+    background-color: #bbc4c2;
+}
+
+h1{
+  text-align: center;
+  color: #000;
+  font-size: 20pt;
+}
+
+h2, p {
+    color: #000;
+    text-align: center;
+}
+h3 {
+    color: #000;
+    text-align: center;
+}
+.btn-group button {
+  background-color: #000;
+  border: 1px solid #bbc4c2;
+  color: #bbc4c2;
+  padding: 10px 24px;
+  cursor: pointer;
+  float: left;
+}
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; 
+}
+
+.btn-group button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: black; 
+  color: #bbc4c2; 
+  border: 2px solid black;
+}
+
+.button1:hover {
+  background-color: white;
+  color: black;
+}
+
+.button2 {
+    background-color: black; 
+  color: #bbc4c2;
+  border: 2px solid black;
+}
+
+.button2:hover {
+    background-color: white;
+  color: black;
+}
+
+.flex-parent {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+button.margin-right {
+  margin-right: 20px;
+}
+
+.btn-home button {
+  background-color: #000;
+  border: 1px solid 1a8eabfd;
+  color: #ffffff;
+  padding: 10px 24px;
+  cursor: pointer;
+  float: left;
+}
+
+
+button[type=submit] {
+  width: 100%;
+  background-color: #000;
+  color: #bbc4c2;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button[type=submit]:hover {
+  background-color: white;
+  color: black;
+}
+
+
+td {
+  text-align: center;
+  font-size: 12pt;
+}
+
+table {
+  padding-top: 20px;
+}
+
+th{
+  padding-top: 20px;
+  text-align: center;
+  font-size: 15pt;
+}
+
+</style>
+<body>
+<h1>PackApt</h1>
+</div>
+<div class="btn-group" style="width:100%">
+    <a href="/update-package">
+        <button style="width:100%">Update</button>
+    </a>
+
+</div>
+<h2>Purpose:</h2>
+<p>
+The purpose of this application is to auto-update the packages for Ubuntu. Lets say that the admin 
+does not want to update every package, this application allows for the user to install 1 package, all
+of the packages, and it ensures that the packages are installed. 
+</p>
+<br>
+<h2>How to:</h2>
+<p>
+To begin, click the Package Compare button below this section. This will allow the end user to get the 
+baseline of want packages are needed to be installed. The view button will display the results for 
+the user to see. The end user can also update the packages as well. To do this, the end user must click
+the Update button in the navbar and this will allow the user to update a single or all of the packages. 
+</p>
+
+<div class="royal" style="width:100%">
+<form action="/package-compare/" method="post">
+    <button type="submit" name="pull" style="width=50%">PULL</button>
+</form>
+</div>
+
+<form action="/package-compare/packages" method="post">
+    <button type="submit" name="result" style="width=50%">RESULTS</button>
+</form>
+
+<br>
+
+<div class="TEST" style="text-align:center; font-size:20pt; color:red;" > 
+{{test}}
+</div>
+
+<table style="width:100%">
+  <th><u>Package Results:</u></th>     
+  <tr>
+  {%for element in final%} 
+  <td>{{element}}</td> 
+  </tr> 
+  {%endfor%} 
+
+</body>
+</html>

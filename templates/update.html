@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PackAPT</title>
+</head>
+<!Doctype html>
+<style>
+body {
+    background-color: #bbc4c2;
+}
+
+h1{
+  text-align: center;
+  color: #000;
+  font-size: 20pt;
+}
+
+h2, p {
+    color: #000;
+    text-align: center;
+}
+h3 {
+    color: #000;
+    text-align: center;
+}
+.btn-group button {
+  background-color: #000;
+  border: 1px solid #bbc4c2;
+  color: #bbc4c2;
+  padding: 10px 24px;
+  cursor: pointer;
+  float: left;
+}
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; 
+}
+
+.btn-group button:hover {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: black; 
+  color: #bbc4c2; 
+  border: 2px solid black;
+}
+
+.button1:hover {
+  background-color: white;
+  color: black;
+}
+
+.button2 {
+    background-color: black; 
+  color: #bbc4c2;
+  border: 2px solid black;
+}
+
+.button2:hover {
+    background-color: white;
+  color: black;
+}
+
+.flex-parent {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+button.margin-right {
+  margin-right: 20px;
+}
+
+.btn-home button {
+  background-color: #000;
+  border: 1px solid 1a8eabfd;
+  color: #ffffff;
+  padding: 10px 24px;
+  cursor: pointer;
+  float: left;
+}
+
+button[type=submit] {
+  width: 100%;
+  background-color: #000;
+  color: #bbc4c2;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button[type=submit]:hover {
+  background-color: white;
+  color: black;
+}
+
+input[type=text] {
+  width: 95%;
+  background-color: #fff;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+</style>
+<body>
+<h1>PackApt</h1>
+</div>
+<div class="btn-group" style="width:100%">
+    <a href="/">
+        <button style="width:100%">HOME</button>
+    </a>
+
+</div>
+<h2>Update Every Package:</h2>
+<p>
+After reviewing the package results, the user can update every package from the list. To do so,
+all you need to do is click the button below.
+</p>
+<div class="royal" style="width:100%">
+<form action="/update-all/" method="post">
+    <button type="submit" name="all" style="width=50%">Update-All</button>
+</form>
+</div>
+
+
+<br>
+<h2>Update Single Package:</h2>
+<p>
+After reviewing the package results, the user can update a single package from the list. To do so,
+fill out the package below and click the send button.
+</p>
+
+
+<form action="/single-update/" method="post">
+    <label for="spack">Package Name:</label><br>
+    <input type="text" id="fname" name="spack"><br>
+    <button type="submit" name="single" style="width=50%">Send</button>
+</form>
+
+<br>
+<div class="TEST" style="text-align:center; font-size:20pt; color:red;" >
+{{test}}
+</div>
+
+
+</body>
+</html>
