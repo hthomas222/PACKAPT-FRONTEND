@@ -3,7 +3,6 @@ import subprocess
 from pathlib import Path
 
 app = Flask(__name__)
-app.secret_key = "change-me"  # needed for flash
 
 PACKAGES_FILE = Path("packages.txt")
 UPGRADABLE_FILE = Path("computer_upgradable_packages.txt")
