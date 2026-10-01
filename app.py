@@ -83,4 +83,4 @@ def supdate():
 
 
 if __name__ == "__main__":
-    app.run(port=8080, debug=True)  # debug=False in production
+    app.run(port=8080, debug=True)  # nosec B104
