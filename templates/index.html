@@ -2,188 +2,233 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PackAPT</title>
+    <style>
+        :root {
+            --bg: #bbc4c2;
+            --primary: #1a1a1a;
+            --primary-hover: #333;
+            --text: #111;
+            --card-bg: #ffffff;
+            --border: #d0d7d5;
+            --accent: #2c3e50;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        nav {
+            background: var(--primary);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        nav .logo {
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* Main container */
+        .container {
+            max-width: 860px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 1.75rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+
+        .card p {
+            color: #444;
+            margin-bottom: 1rem;
+        }
+
+        /* Buttons */
+        .btn-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.25rem;
+        }
+
+        button, .btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover, .btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Status message */
+        .status {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #c0392b;
+            margin: 1.5rem 0;
+            min-height: 1.5rem;
+        }
+
+        /* Results table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th {
+            text-align: left;
+            padding: 0.9rem 1rem;
+            background: #f4f6f5;
+            border-bottom: 2px solid var(--border);
+            font-size: 0.95rem;
+            color: var(--accent);
+        }
+
+        td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border);
+            font-family: "SF Mono", "Fira Code", monospace;
+            font-size: 0.95rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #f9faf9;
+        }
+
+        .empty {
+            text-align: center;
+            color: #666;
+            padding: 1.5rem;
+            font-style: italic;
+        }
+    </style>
 </head>
-<!Doctype html>
-<style>
-body {
-    background-color: #bbc4c2;
-}
-
-h1{
-  text-align: center;
-  color: #000;
-  font-size: 20pt;
-}
-
-h2, p {
-    color: #000;
-    text-align: center;
-}
-h3 {
-    color: #000;
-    text-align: center;
-}
-.btn-group button {
-  background-color: #000;
-  border: 1px solid #bbc4c2;
-  color: #bbc4c2;
-  padding: 10px 24px;
-  cursor: pointer;
-  float: left;
-}
-.btn-group:after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-.btn-group button:not(:last-child) {
-  border-right: none; 
-}
-
-.btn-group button:hover {
-  background-color: white;
-  color: black;
-  border: 1px solid black;
-}
-
-.button {
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
-.button1 {
-  background-color: black; 
-  color: #bbc4c2; 
-  border: 2px solid black;
-}
-
-.button1:hover {
-  background-color: white;
-  color: black;
-}
-
-.button2 {
-    background-color: black; 
-  color: #bbc4c2;
-  border: 2px solid black;
-}
-
-.button2:hover {
-    background-color: white;
-  color: black;
-}
-
-.flex-parent {
-  display: flex;
-}
-
-.jc-center {
-  justify-content: center;
-}
-
-button.margin-right {
-  margin-right: 20px;
-}
-
-.btn-home button {
-  background-color: #000;
-  border: 1px solid 1a8eabfd;
-  color: #ffffff;
-  padding: 10px 24px;
-  cursor: pointer;
-  float: left;
-}
-
-
-button[type=submit] {
-  width: 100%;
-  background-color: #000;
-  color: #bbc4c2;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-button[type=submit]:hover {
-  background-color: white;
-  color: black;
-}
-
-
-td {
-  text-align: center;
-  font-size: 12pt;
-}
-
-table {
-  padding-top: 20px;
-}
-
-th{
-  padding-top: 20px;
-  text-align: center;
-  font-size: 15pt;
-}
-
-</style>
 <body>
-<h1>PackApt</h1>
-</div>
-<div class="btn-group" style="width:100%">
-    <a href="/update-package">
-        <button style="width:100%">Update</button>
-    </a>
+    <nav>
+        <div class="logo">PackAPT</div>
+        <div>
+            <a href="/update-package/">Update Packages</a>
+        </div>
+    </nav>
 
-</div>
-<h2>Purpose:</h2>
-<p>
-The purpose of this application is to auto-update the packages for Ubuntu. Lets say that the admin 
-does not want to update every package, this application allows for the user to install 1 package, all
-of the packages, and it ensures that the packages are installed. 
-</p>
-<br>
-<h2>How to:</h2>
-<p>
-To begin, click the Package Compare button below this section. This will allow the end user to get the 
-baseline of want packages are needed to be installed. The view button will display the results for 
-the user to see. The end user can also update the packages as well. To do this, the end user must click
-the Update button in the navbar and this will allow the user to update a single or all of the packages. 
-</p>
+    <div class="container">
+        <!-- Purpose -->
+        <div class="card">
+            <h2>Purpose</h2>
+            <p>
+                PackAPT lets you selectively update Ubuntu packages.
+                Only packages that appear in both your approved list
+                (<code>packages.txt</code>) and the currently upgradable list
+                will be shown and can be updated.
+            </p>
+        </div>
 
-<div class="royal" style="width:100%">
-<form action="/package-compare/" method="post">
-    <button type="submit" name="pull" style="width=50%">PULL</button>
-</form>
-</div>
+        <!-- How to -->
+        <div class="card">
+            <h2>How to use</h2>
+            <p>
+                1. Click <strong>Pull</strong> to refresh the list of upgradable packages.<br>
+                2. Click <strong>Results</strong> to see the intersection with your approved list.<br>
+                3. Go to <strong>Update Packages</strong> to install a single package or all of them.
+            </p>
 
-<form action="/package-compare/packages" method="post">
-    <button type="submit" name="result" style="width=50%">RESULTS</button>
-</form>
+            <div class="btn-row">
+                <form action="/package-compare/" method="post">
+                    <button type="submit" name="pull" value="1">Pull</button>
+                </form>
 
-<br>
+                <form action="/package-compare/packages" method="post">
+                    <button type="submit" name="result" value="1">Results</button>
+                </form>
+            </div>
+        </div>
 
-<div class="TEST" style="text-align:center; font-size:20pt; color:red;" > 
-{{test}}
-</div>
+        <!-- Status -->
+        <div class="status">
+            {% if test %}{{ test }}{% endif %}
+        </div>
 
-<table style="width:100%">
-  <th><u>Package Results:</u></th>     
-  <tr>
-  {%for element in final%} 
-  <td>{{element}}</td> 
-  </tr> 
-  {%endfor%} 
-
+        <!-- Results -->
+        {% if final %}
+        <div class="card">
+            <h2>Upgradable Packages</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Package Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for element in final %}
+                    <tr>
+                        <td>{{ element }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% elif final is defined %}
+        <div class="card">
+            <p class="empty">No matching upgradable packages found.</p>
+        </div>
+        {% endif %}
+    </div>
 </body>
 </html>
