@@ -3,17 +3,20 @@ import subprocess
 from pathlib import Path
 
 app = Flask(__name__)
-app.secret_key = "change-me"          # needed for flash
+app.secret_key = "change-me"  # needed for flash
 
 PACKAGES_FILE = Path("packages.txt")
 UPGRADABLE_FILE = Path("computer_upgradable_packages.txt")
+
 
 def get_upgradable_packages() -> list[str]:
     """Return intersection of packages.txt and currently upgradable packages."""
     if not PACKAGES_FILE.exists() or not UPGRADABLE_FILE.exists():
         return []
 
-    allowed = {line.strip() for line in PACKAGES_FILE.read_text().splitlines() if line.strip()}
+    allowed = {
+        line.strip() for line in PACKAGES_FILE.read_text().splitlines() if line.strip()
+    }
     upgradable = set()
     for line in UPGRADABLE_FILE.read_text().splitlines():
         # apt list --upgradable lines look like: package/version ...
@@ -34,8 +37,7 @@ def packagecompare():
     if "pull" in request.form:
         # safer: capture output ourselves instead of shell redirect
         result = subprocess.run(
-            ["apt", "list", "--upgradable"],
-            capture_output=True, text=True, check=False
+            ["apt", "list", "--upgradable"], capture_output=True, text=True, check=False
         )
         UPGRADABLE_FILE.write_text(result.stdout)
         flash("Pull complete")
@@ -57,8 +59,7 @@ def update():
         for pkg in packages:
             # NEVER shell=True; also consider a root helper instead
             subprocess.run(
-                ["apt-get", "install", "--only-upgrade", "-y", pkg],
-                check=False
+                ["apt-get", "install", "--only-upgrade", "-y", pkg], check=False
             )
         flash("Updates complete")
         return render_template("update.html")
@@ -77,13 +78,10 @@ def supdate():
         flash(f"{pack} is not in the allowed upgradable list")
         return redirect(url_for("update"))
 
-    subprocess.run(
-        ["apt-get", "install", "--only-upgrade", "-y", pack],
-        check=False
-    )
+    subprocess.run(["apt-get", "install", "--only-upgrade", "-y", pack], check=False)
     flash(f"Single package {pack} updated")
     return render_template("update.html")
 
 
 if __name__ == "__main__":
-    app.run(port=8080, debug=True)   # debug=False in production
+    app.run(port=8080, debug=True)  # debug=False in production
